@@ -30,3 +30,13 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Special files
+nul
+
+# Build outputs
+index.html
+desenho-arq-aws.png
+
+# Monitoring
+monitoring/

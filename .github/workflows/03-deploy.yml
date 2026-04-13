@@ -1,0 +1,47 @@
+name: "03 Deploy to ECS"
+
+on:
+  workflow_run:
+    workflows: ["02 Build and Push"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Download Task Definition
+        run: |
+          aws ecs describe-task-definition --task-definition devops-fullstack-aws-task --query taskDefinition > task-definition.json
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: devops-fullstack-aws
+          image: ${{ secrets.ECR_REGISTRY }}/devops-fullstack-aws-repo:latest
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: devops-fullstack-aws-service
+          cluster: devops-fullstack-aws-cluster
+          wait-for-service-stability: true
+
+      - name: Get ALB DNS
+        run: |
+          ALB_DNS=$(aws elbv2 describe-load-balancers --names devops-fullstack-aws-alb --query 'LoadBalancers[0].DNSName' --output text)
+          echo "Application is live at: http://$ALB_DNS"
