@@ -1,0 +1,5 @@
+{
+  "name": "DevOps Full Stack AWS",
+  "description": "A production-ready DevOps project showcasing Infrastructure as Code, containerization, CI/CD pipelines, and cloud observability on AWS.",
+  "requestFramePermissions": []
+}

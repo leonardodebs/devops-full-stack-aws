@@ -1,4 +1,4 @@
-# DevOps Full Stack AWS - Documentação em Português
+# DevOps Full Stack AWS
 
 > Um projeto DevOps pronto para produção que demonstra Infraestrutura como Código, containerização, pipelines CI/CD e observabilidade em nuvem na AWS.
 
@@ -223,7 +223,7 @@ A infraestrutura é modularizada para reutilização:
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a licença MIT
 
 ## Recursos Adicionais
 
@@ -233,4 +233,3 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 
 ---
 
-*Documentação gerada em Português Brasileiro para facilitar o entendimento e uso do projeto por equipes de fala portuguesa.*
