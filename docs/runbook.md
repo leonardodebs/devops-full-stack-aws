@@ -1,22 +1,22 @@
 # Runbook
 
-## Operations
+## Operações
 
-### Local Development
-1. Run `make setup` to prepare scripts.
-2. Run `make run` to start the app, Prometheus, and Grafana.
-3. Access the API at `http://localhost:8000`.
+### Desenvolvimento Local
+1. Execute `make setup` para preparar os scripts.
+2. Execute `make run` para iniciar a aplicação, Prometheus e Grafana.
+3. Acesse a API em `http://localhost:8000`.
 
-### Deployment to AWS
-1. Ensure AWS CLI is configured.
-2. Run `make setup` to create the S3 backend.
-3. Run `make tf-init`.
-4. Run `make tf-apply`.
+### Deploy na AWS
+1. Garanta que a AWS CLI está configurada.
+2. Execute `make setup` para criar o backend no S3.
+3. Execute `make tf-init`.
+4. Execute `make tf-apply`.
 
-### Monitoring
-- **CloudWatch**: Check the `/ecs/devops-fullstack-aws` log group.
-- **Dashboard**: Import `monitoring/cloudwatch-dashboard.json` into CloudWatch.
+### Monitoramento
+- **CloudWatch**: Verifique o grupo de logs `/ecs/devops-fullstack-aws`.
+- **Dashboard**: Importe `monitoring/cloudwatch-dashboard.json` no CloudWatch.
 
 ### Troubleshooting
-- **ECS Tasks failing**: Check CloudWatch logs for application errors.
-- **ALB Health Check failing**: Ensure the container is listening on port 8000 and `/health` returns 200.
+- **Tarefas ECS falhando**: Verifique os logs do CloudWatch para erros da aplicação.
+- **Health Check do ALB falhando**: Garanta que o container está escutando na porta 8000 e que `/health` retorna 200.

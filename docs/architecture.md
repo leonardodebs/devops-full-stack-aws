@@ -1,9 +1,9 @@
-# Architecture
+# Arquitetura
 
-## Overview
-This project implements a highly available, scalable, and secure infrastructure on AWS using a modern DevOps stack.
+## Visão Geral
+Este projeto implementa uma infraestrutura altamente disponível, escalável e segura na AWS usando uma pilha DevOps moderna.
 
-## Diagram
+## Diagrama
 ```text
       +---------------------------------------------------------+
       |                      Internet                           |
@@ -30,10 +30,10 @@ This project implements a highly available, scalable, and secure infrastructure 
       +---------------------------------------------------------+
 ```
 
-## Components
-- **VPC**: Isolated network with public and private subnets across 2 AZs.
-- **ALB**: Distributes incoming traffic to ECS tasks.
-- **ECS Fargate**: Serverless container orchestration.
-- **ECR**: Private Docker registry.
-- **NAT Gateway**: Allows private tasks to access the internet for updates.
-- **IAM**: Least privilege roles for task execution.
+## Componentes
+- **VPC**: Rede isolada com subnets públicas e privadas em 2 Zonas de Disponibilidade.
+- **ALB**: Distribui o tráfego de entrada para as tarefas ECS.
+- **ECS Fargate**: Orquestração de containers sem servidor.
+- **ECR**: Registro privado de Docker.
+- **NAT Gateway**: Permite que tarefas privadas acessem a internet para atualizações.
+- **IAM**: Funções com privilégios mínimos para execução de tarefas.
