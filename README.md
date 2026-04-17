@@ -31,26 +31,8 @@ Este projeto demonstra as melhores práticas de DevOps modernas usando a AWS com
 
 ### Diagrama de Arquitetura
 
-```
-                                 [ Usuários ]
-                                      |
-                                      v
-                           [ Route 53 / DNS ]
-                                      |
-                                      v
-                     [ Application Load Balancer ]
-                                      |
-              +-----------------------+-----------------------+
-              |                                               |
-              v                                               v
-    [ ECS Fargate Task ]                           [ ECS Fargate Task ]
-    (Subnet Privada A)                             (Subnet Privada B)
-              |                                               |
-              +-----------------------+-----------------------+
-                                      |
-                                      v
-                           [ CloudWatch / Logs ]
-```
+![Arquitetura AWS Full Stack](./stack.png)
+
 
 ### Componentes da Arquitetura
 

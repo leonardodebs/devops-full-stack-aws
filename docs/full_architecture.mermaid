@@ -1,0 +1,56 @@
+graph TD
+    subgraph "Public Internet"
+        User((Usuários))
+    end
+
+    subgraph "AWS Cloud"
+        R53[Amazon Route 53]
+        ECR[Amazon ECR]
+        CW[AWS CloudWatch]
+        XR[AWS X-Ray]
+        
+        subgraph "VPC"
+            subgraph "Public Subnets (AZ-A & AZ-B)"
+                ALB[Application Load Balancer]
+                NAT[NAT Gateway]
+            end
+            
+            subgraph "Private Subnets (AZ-A & AZ-B)"
+                subgraph "ECS Fargate Cluster"
+                    Task1[ECS Task - FastAPI]
+                    Task2[ECS Task - FastAPI]
+                end
+            end
+        end
+    end
+
+    subgraph "GitHub Actions CI/CD"
+        PR[Lint & Test] --> Build[Build & Push to ECR]
+        Build --> Deploy[Deploy to ECS]
+    end
+
+    subgraph "Local / Monitoring"
+        Prom[Prometheus]
+        Graf[Grafana]
+    end
+
+    User --> R53
+    R53 --> ALB
+    ALB --> Task1
+    ALB --> Task2
+    Task1 --> CW
+    Task2 --> CW
+    Task1 --> XR
+    Task2 --> XR
+    Task1 --> NAT
+    Task2 --> NAT
+    NAT -->|Outbound Updates| PublicInternet[Internet]
+    
+    Deploy --> Task1
+    Deploy --> Task2
+    Build --> ECR
+    ECR --> Task1
+    ECR --> Task2
+    
+    Task1 -.-> Prom
+    Prom -.-> Graf
