@@ -1,5 +1,9 @@
 # DevOps Full Stack AWS
 
+[![01 Lint and Test](https://github.com/leonardodebs/devops-full-stack-aws/actions/workflows/01-lint-test.yml/badge.svg)](https://github.com/leonardodebs/devops-full-stack-aws/actions/workflows/01-lint-test.yml)
+[![02 Build and Push](https://github.com/leonardodebs/devops-full-stack-aws/actions/workflows/02-build-push.yml/badge.svg)](https://github.com/leonardodebs/devops-full-stack-aws/actions/workflows/02-build-push.yml)
+[![03 Deploy to ECS](https://github.com/leonardodebs/devops-full-stack-aws/actions/workflows/03-deploy.yml/badge.svg)](https://github.com/leonardodebs/devops-full-stack-aws/actions/workflows/03-deploy.yml)
+
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
